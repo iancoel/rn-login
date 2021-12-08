@@ -17,7 +17,7 @@ export default function SignUp() {
           <TextInput placeholder="E-mail" />
           <TextInput placeholder="Senha" secureTextEntry={true} />
           <TouchableOpacity>
-            <Text>Cadastre-se</Text>
+            <Text>Cadastrar</Text>
           </TouchableOpacity>
         </View>
       </View>
