@@ -15,19 +15,25 @@ import {useNavigation} from '@react-navigation/native';
 import api from '../../services';
 
 export default function SignIn() {
+  const [token, setToken] = useState({});
   const [user, setUser] = useState({});
   const navigation = useNavigation();
 
   const handleLogin = () => {
     api
-      .post('session', user)
+      .post('session', user, {
+        headers: {
+          ContentType: 'application/json',
+        },
+      })
       .then(r => {
-        Alert.success(r.data.token);
+        console.log(r.data);
+        setToken(r.data);
         setTimeout(() => {
           navigation.navigate('Dash');
-        }, 5000);
+        }, 3000);
       })
-      .catch(err => Alert.error(err))
+      .catch(err => Alert(err))
       .finally(() =>
         setUser({
           email: '',
