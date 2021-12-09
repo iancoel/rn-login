@@ -27,6 +27,7 @@ export default function SignUp() {
     api
       .post('users', data)
       .then(res => {
+        console.log(res);
         navigation.navigate('Logar');
         setData({
           name: '',
@@ -34,8 +35,9 @@ export default function SignUp() {
           password: '',
         });
       })
-      .catch(() => Alert('Houve algum erro'))
+      .catch(() => console.log('Houve algum erro'))
       .finally(() => {
+        console.log(data);
         setData({
           name: '',
           email: '',

@@ -27,13 +27,12 @@ export default function SignIn() {
         },
       })
       .then(r => {
-        console.log(r.data);
         setToken(r.data);
         setTimeout(() => {
           navigation.navigate('Dash');
         }, 3000);
       })
-      .catch(err => Alert(err))
+      .catch(err => console.log(err))
       .finally(() =>
         setUser({
           email: '',
