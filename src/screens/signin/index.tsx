@@ -14,10 +14,11 @@ import {useNavigation} from '@react-navigation/native';
 
 import api from '../../services';
 
-export default function SignIn() {
-  const [token, setToken] = useState({});
-  const [user, setUser] = useState({});
-  const navigation = useNavigation();
+import {IUser} from '../../types';
+
+const SignIn = () => {
+  const [user, setUser] = useState<IUser>({} as IUser);
+  const navigation: void | any = useNavigation();
 
   const handleLogin = () => {
     api
@@ -27,7 +28,6 @@ export default function SignIn() {
         },
       })
       .then(r => {
-        setToken(r.data);
         setTimeout(() => {
           navigation.navigate('Dash');
         }, 3000);
@@ -74,7 +74,7 @@ export default function SignIn() {
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   default: {
@@ -94,3 +94,5 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 });
+
+export default SignIn;

@@ -15,9 +15,11 @@ import {useNavigation} from '@react-navigation/native';
 
 import api from '../../services';
 
-export default function SignUp() {
-  const navigation = useNavigation();
-  const [data, setData] = useState({});
+import {IUser} from '../../types';
+
+const SignUp: React.FC = () => {
+  const navigation: void | any = useNavigation();
+  const [data, setData] = useState<IUser>({} as IUser);
 
   const handleLogin = () => {
     navigation.navigate('Logar');
@@ -78,7 +80,7 @@ export default function SignUp() {
       </View>
     </SafeAreaView>
   );
-}
+};
 
 const styles = StyleSheet.create({
   default: {
@@ -93,3 +95,5 @@ const styles = StyleSheet.create({
     borderRadius: 12,
   },
 });
+
+export default SignUp;
